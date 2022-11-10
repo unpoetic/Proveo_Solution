@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "Nicholas",
+    "lastName": "Johnson",
+    "email": "nick.johnson704@gmail.com",
+    "age": 78
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Dylan",
+    "email": "bob.dylan@email.com",
+    "age": 82
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Jackson",
+    "email": "michael.jackson@email.com",
+    "age": 112
+  },
+  {
+    "firstName": "21",
+    "lastName": "Savage",
+    "email": "artist@email.com",
+    "age": 32
+  },
+  {
+    "firstName": "Ben",
+    "lastName": "Klock",
+    "email": "ben.klock@email.com",
+    "age": 43
+  }
+]
