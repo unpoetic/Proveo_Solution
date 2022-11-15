@@ -24,34 +24,47 @@ interface Employee {
     const handleClose = () => setOpen(false);
 
 	useEffect(() => {
-	fetch('http://127.0.0.1:8080/employee-info')
+	fetch('http://127.0.0.1:8081/employee-info')
 	.then((response) => response.json())
 	.then((data) => {
 		setData(data);
 	});
 	}, []);
+
+    const getNewData = (data: any) => {
+        if(data)
+            setData(JSON.parse(data));
+    }
+
     return (
         <React.Fragment>
-            <Box sx={{ minWidth: 275, marginBottom:"10px" }}>
-            <AddEmployeeInfoModal></AddEmployeeInfoModal>
-                {data.map((employee) => (
-                    <Card key={employee._id} variant="outlined">
+            <Box sx={{ minWidth: 275 }}>
+            <AddEmployeeInfoModal data={data} updatedData={getNewData}></AddEmployeeInfoModal>
+                {data.map((employee, i) => (
+                    <Card sx={{marginBottom: '10px', paddingBottom: '10px', width: "500px"}} key={i} variant="outlined">
                         <CardContent>
                             <Typography sx={{ fontSize: 24, fontWeight:'bold' }} color="text.secondary" gutterBottom>
                                 {employee.firstName} {employee.lastName} : {employee.age}
                             </Typography>
-                            <Typography variant="body2">
+                            <Typography sx={{lineHeight:"40px"}} variant="body2">
                                 {employee.email}
-                                <br />
                             </Typography>
                         </CardContent>
                         <CardActions>
                         <Grid container spacing={1} columns={12}>
-                            <Grid item xs={6}>
-                                <EditEmployeeInfoModal firstName={employee.firstName } lastName={employee.lastName} email={employee.email} age={employee.age}></EditEmployeeInfoModal>
+                            <Grid item xs={2}>
+                            <Typography sx={{lineHeight:"40px", marginLeft:"5px"}} variant="body2">
+                                {"www."}{employee.firstName}{employee.lastName}{".com"}
+                            </Typography>
                             </Grid>
                             <Grid item xs={6}>
-                            <DeleteEmployeeInfoModal firstName={employee.firstName } lastName={employee.lastName} email={employee.email} age={employee.age}></DeleteEmployeeInfoModal>
+                            </Grid>
+                            
+                            <Grid item xs={2}>
+                                <EditEmployeeInfoModal data={data} id={i} updatedData={getNewData} firstName={employee.firstName } lastName={employee.lastName} email={employee.email} age={employee.age}></EditEmployeeInfoModal>
+                            </Grid>
+                            <Grid item xs={2}>
+                            <DeleteEmployeeInfoModal data ={data} id={i} firstName={ employee.firstName } updatedData={getNewData}></DeleteEmployeeInfoModal>
                             </Grid>
                         </Grid>
                         </CardActions>

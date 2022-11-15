@@ -12,13 +12,16 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.ts localhost 8080"
+    "start": "SLS_DEBUG=* isLocal=true NODE_ENV=dev nodemon ./server.ts localhost 8081"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20"
   }
